@@ -7,10 +7,10 @@ import os
 
 
 ## set directories
-os.chdir('C:/Users/Chow Mein/PycharmProjects/facemask')
-path = 'C:/Users/Chow Mein/PycharmProjects/facemask/image/'
+os.chdir('PATH_TO_DIR')
+path = 'IMAGE_PATH'
 
-#Initialize color
+#Initialize color [color_type]
 color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
@@ -98,21 +98,21 @@ for face in faces:
     fmask_e = points + mask_e
     # print(fmask_a)
 
-    # Using Python OpenCV – cv2.polylines() method to draw mask outline for:
+    # Using Python OpenCV – cv2.polylines() method to draw mask outline for [mask_type]:
     # fmask_a = wide, high coverage mask,
     # fmask_c = wide, medium coverage mask,
-    # f_mask_e  = wide, low coverage mask
+    # fmask_e  = wide, low coverage mask
 
     fmask_a = np.array(fmask_a, dtype=np.int32)
     fmask_c = np.array(fmask_c, dtype=np.int32)
     fmask_e = np.array(fmask_e, dtype=np.int32)
 
     # change parameter [mask_type] and color_type for various combination
-    img2 = cv2.polylines(img, [fmask_c], True, color_black, thickness=2, lineType=cv2.LINE_8)
+    img2 = cv2.polylines(img, [mask_type], True, color_type, thickness=2, lineType=cv2.LINE_8)
 
     # Using Python OpenCV – cv2.fillPoly() method to fill mask
     # change parameter [mask_type] and color_type for various combination
-    img3 = cv2.fillPoly(img2, [fmask_c], color_black, lineType=cv2.LINE_AA)
+    img3 = cv2.fillPoly(img2, [mask_type], color_type, lineType=cv2.LINE_AA)
 
 # cv2.imshow("image with mask outline", img2)
 cv2.imshow("image with mask", img3)
