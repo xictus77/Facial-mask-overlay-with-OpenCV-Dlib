@@ -7,10 +7,10 @@ import os
 
 
 ## set directories
-os.chdir('C:/Users/Chow Mein/PycharmProjects/facemask')
-path = 'C:/Users/Chow Mein/PycharmProjects/facemask/image/'
+os.chdir('PATH_TO_DIR')
+path = 'IMAGE_PATH'
 
-#Initialize color
+#Initialize color [color_type]
 color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
@@ -95,18 +95,13 @@ for face in faces:
 
     # Using Python OpenCV – cv2.ellipse() method to draw mask outline for mask
     # change last parameter - line thickness and color_type for various combination
-    img_2 = cv2.ellipse(img, centre, axes, 0, 0, 360, color_cyan, 2)
-
-    # fmask_a = np.array(fmask_a, dtype=np.int32)
-    # fmask_c = np.array(fmask_a, dtype=np.int32)
-    # fmask_e = np.array(fmask_a, dtype=np.int32)
+    img_2 = cv2.ellipse(img, centre, axes, 0, 0, 360, color_type, thickness=2)
 
 
-    # img2 = cv2.polylines(img, [fmask_c], True, (255, 200, 0), thickness=2, lineType=cv2.LINE_8)
 
     # Using Python OpenCV – cv2.ellipse() method to draw mask outline for mask
     # change last parameter - line thickness to negative for fill and color_type for various combination
-    img_3 = cv2.ellipse(img, centre, axes, 0, 0, 360, color_cyan, -1)
+    img_3 = cv2.ellipse(img, centre, axes, 0, 0, 360, color_type, thickness=-1)
 
 # cv2.imshow("image with mask outline", img_2)
 cv2.imshow("image with mask", img_3)
