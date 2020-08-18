@@ -4,7 +4,7 @@ import dlib
 import numpy as np
 import os
 
-
+# This code is for drawing ellipse type of mask
 
 ## set directories
 os.chdir('PATH_TO_DIR')
