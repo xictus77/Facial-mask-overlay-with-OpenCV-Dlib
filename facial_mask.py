@@ -14,6 +14,36 @@ path = 'IMAGE_PATH'
 color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
+# Use input () function to capture from user requirements for mask type and mask colour
+choice1 = input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black:\n")
+choice1 = int(choice1)
+
+if choice1 == 1:
+    choice1 = color_cyan
+    print(f'You selected color cyan')
+elif choice1 == 2:
+    choice1 = color_black
+    print(f'You selected color black')
+else:
+    print("invalid selection, please select again.")
+    input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black :\n")
+
+
+choice2 = input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
+choice2 = int(choice2)
+
+if choice2 == 1:
+    # choice2 = fmask_a
+    print(f'You chosen wide, high coverage mask')
+elif choice2 == 2:
+    # choice2 = fmask_c
+    print(f'You chosen wide, medium coverage mask')
+elif choice2 == 3:
+    # choice2 = fmask_e
+    print(f'You chosen wide, low coverage mask')
+else:
+    print("invalid selection, please select again.")
+    input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
 
 # Loading the image and converting it to grayscale
 img= cv2.imread('image/11.jpg')
@@ -92,11 +122,18 @@ for face in faces:
               ((landmarks.part(32).x), (landmarks.part(32).y)),
               ((landmarks.part(31).x), (landmarks.part(31).y))]
 
-
     fmask_a = points + mask_a
     fmask_c = points + mask_c
     fmask_e = points + mask_e
-    # print(fmask_a)
+
+
+    if choice2 == 1:
+        choice2 = fmask_a
+    elif choice2 == 2:
+        choice2 = fmask_c
+    elif choice2 == 3:
+        choice2 = fmask_e
+
 
     # Using Python OpenCV – cv2.polylines() method to draw mask outline for [mask_type]:
     # fmask_a = wide, high coverage mask,
@@ -108,11 +145,11 @@ for face in faces:
     fmask_e = np.array(fmask_e, dtype=np.int32)
 
     # change parameter [mask_type] and color_type for various combination
-    img2 = cv2.polylines(img, [mask_type], True, color_type, thickness=2, lineType=cv2.LINE_8)
+    img2 = cv2.polylines(img, [fmask_c], True, choice1, thickness=2, lineType=cv2.LINE_8)
 
     # Using Python OpenCV – cv2.fillPoly() method to fill mask
     # change parameter [mask_type] and color_type for various combination
-    img3 = cv2.fillPoly(img2, [mask_type], color_type, lineType=cv2.LINE_AA)
+    img3 = cv2.fillPoly(img2, [fmask_c], choice1, lineType=cv2.LINE_AA)
 
 # cv2.imshow("image with mask outline", img2)
 cv2.imshow("image with mask", img3)
