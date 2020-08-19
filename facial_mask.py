@@ -20,10 +20,10 @@ choice1 = int(choice1)
 
 if choice1 == 1:
     choice1 = color_cyan
-    print(f'You selected color cyan')
+    print('You selected mask color = cyan')
 elif choice1 == 2:
     choice1 = color_black
-    print(f'You selected color black')
+    print('You selected mask color = black')
 else:
     print("invalid selection, please select again.")
     input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black :\n")
@@ -44,6 +44,10 @@ elif choice2 == 3:
 else:
     print("invalid selection, please select again.")
     input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
+
+print(choice2)
+
+
 
 # Loading the image and converting it to grayscale
 img= cv2.imread('image/11.jpg')
@@ -126,13 +130,8 @@ for face in faces:
     fmask_c = points + mask_c
     fmask_e = points + mask_e
 
-
-    if choice2 == 1:
-        choice2 = fmask_a
-    elif choice2 == 2:
-        choice2 = fmask_c
-    elif choice2 == 3:
-        choice2 = fmask_e
+    # mask_type = {1: fmask_a, 2: fmask_c, 3: fmask_e}
+    # mask_type[choice2]
 
 
     # Using Python OpenCV – cv2.polylines() method to draw mask outline for [mask_type]:
@@ -144,17 +143,16 @@ for face in faces:
     fmask_c = np.array(fmask_c, dtype=np.int32)
     fmask_e = np.array(fmask_e, dtype=np.int32)
 
+    mask_type = {1: fmask_a, 2: fmask_c, 3: fmask_e}
+    mask_type[choice2]
+
+
     # change parameter [mask_type] and color_type for various combination
-    img2 = cv2.polylines(img, [fmask_c], True, choice1, thickness=2, lineType=cv2.LINE_8)
+    img2 = cv2.polylines(img, [mask_type[choice2]], True, choice1, thickness=2, lineType=cv2.LINE_8)
 
     # Using Python OpenCV – cv2.fillPoly() method to fill mask
     # change parameter [mask_type] and color_type for various combination
-    img3 = cv2.fillPoly(img2, [fmask_c], choice1, lineType=cv2.LINE_AA)
+    img3 = cv2.fillPoly(img2, [mask_type[choice2]], choice1, lineType=cv2.LINE_AA)
 
 # cv2.imshow("image with mask outline", img2)
 cv2.imshow("image with mask", img3)
-
-
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
