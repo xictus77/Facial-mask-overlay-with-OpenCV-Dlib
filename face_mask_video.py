@@ -9,6 +9,39 @@ import os
 color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
+# Use input () function to capture from user requirements for mask type and mask colour
+choice1 = input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black:\n")
+choice1 = int(choice1)
+
+if choice1 == 1:
+    choice1 = color_cyan
+    print('You selected mask color = cyan')
+elif choice1 == 2:
+    choice1 = color_black
+    print('You selected mask color = black')
+else:
+    print("invalid selection, please select again.")
+    input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black :\n")
+
+
+choice2 = input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
+choice2 = int(choice2)
+
+if choice2 == 1:
+    # choice2 = fmask_a
+    print(f'You chosen wide, high coverage mask')
+elif choice2 == 2:
+    # choice2 = fmask_c
+    print(f'You chosen wide, medium coverage mask')
+elif choice2 == 3:
+    # choice2 = fmask_e
+    print(f'You chosen wide, low coverage mask')
+else:
+    print("invalid selection, please select again.")
+    input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
+
+# print(choice2)
+
 
 cap = cv2.VideoCapture(0)
 # We initialise detector of dlib
@@ -88,14 +121,16 @@ while True:
         fmask_a = np.array(fmask_a, dtype=np.int32)
         fmask_c = np.array(fmask_c, dtype=np.int32)
         fmask_e = np.array(fmask_e, dtype=np.int32)
+        mask_type = {1: fmask_a, 2: fmask_c, 3: fmask_e}
+        mask_type[choice2]
 
         # points = np.array(points, dtype=np.int32)
         # change parameter [mask_type] and color_type for various combination
-        cv2.polylines(frame, [fmask_c], True, color_cyan, thickness=2, lineType=cv2.LINE_8)
+        cv2.polylines(frame, [mask_type[choice2]], True, color_cyan, thickness=2, lineType=cv2.LINE_8)
 
         # # Using Python OpenCV – cv2.fillPoly() method to fill mask
         # # change parameter [mask_type] and color_type for various combination
-        cv2.fillPoly(frame, [fmask_c], color_cyan, lineType=cv2.LINE_AA)
+        cv2.fillPoly(frame, [mask_type[choice2]], color_cyan, lineType=cv2.LINE_AA)
 
     # cv2.imshow("frame with mask outline", frame)
     cv2.imshow("Frame with mask", frame)
@@ -109,5 +144,3 @@ cap.release()
 
 # Close all windows
 cv2.destroyAllWindows()
-
-
