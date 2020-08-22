@@ -45,7 +45,7 @@ else:
     print("invalid selection, please select again.")
     input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
 
-print(choice2)
+# print(choice2)
 
 
 
