@@ -156,3 +156,12 @@ for face in faces:
 
 # cv2.imshow("image with mask outline", img2)
 cv2.imshow("image with mask", img3)
+
+#Save the output file for testing
+outputNameofImage = "output/imagetest.jpg"
+print("Saving output image to", outputNameofImage)
+cv2.imwrite(outputNameofImage, img3)
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
