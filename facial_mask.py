@@ -3,7 +3,7 @@ import cv2
 import dlib
 import numpy as np
 import os
-
+import imutils
 
 
 ## set directories
@@ -49,8 +49,9 @@ else:
 
 
 
-# Loading the image and converting it to grayscale
-img= cv2.imread('image/11.jpg')
+# Loading the image and resizing, converting it to grayscale
+img= cv2.imread('image/hzchan0708.jpg')
+img = imutils.resize(img, width = 500)
 gray=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Initialize dlib's face detector
