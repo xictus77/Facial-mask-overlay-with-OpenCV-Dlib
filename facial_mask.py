@@ -10,7 +10,7 @@ import imutils
 os.chdir('PATH_TO_DIR')
 path = 'IMAGE_PATH'
 
-#Initialize color [color_type]
+#Initialize color [color_type] = (Blue, Green, Red)
 color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
