@@ -50,7 +50,7 @@ else:
 
 
 # Loading the image and resizing, converting it to grayscale
-img= cv2.imread('image/hzchan0708.jpg')
+img= cv2.imread(path)
 img = imutils.resize(img, width = 500)
 gray=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 

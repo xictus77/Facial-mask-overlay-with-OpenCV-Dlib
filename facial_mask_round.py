@@ -3,6 +3,7 @@ import cv2
 import dlib
 import numpy as np
 import os
+import imutils
 
 # This code is for drawing ellipse type of mask
 
@@ -15,7 +16,8 @@ color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
 # Loading the image and converting it to grayscale
-img= cv2.imread('image/11.jpg')
+img= cv2.imread(path)
+img = imutils.resize(img, width = 500)
 gray=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Initialize dlib's face detector
@@ -105,6 +107,11 @@ for face in faces:
 
 # cv2.imshow("image with mask outline", img_2)
 cv2.imshow("image with mask", img_3)
+
+#Save the output file for testing
+outputNameofImage = "output/imagetest.jpg"
+print("Saving output image to", outputNameofImage)
+cv2.imwrite(outputNameofImage, img_3)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
