@@ -11,16 +11,17 @@ os.chdir('PATH_TO_DIR')
 path = 'IMAGE_PATH'
 
 #Initialize color [color_type] = (Blue, Green, Red)
+color_blue = (254,207,110)
 color_cyan = (255,200,0)
 color_black = (0, 0, 0)
 
 # Use input () function to capture from user requirements for mask type and mask colour
-choice1 = input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black:\n")
+choice1 = input("Please select the choice of mask color\nEnter 1 for blue\nEnter 2 for black:\n")
 choice1 = int(choice1)
 
 if choice1 == 1:
-    choice1 = color_cyan
-    print('You selected mask color = cyan')
+    choice1 = color_blue
+    print('You selected mask color = blue')
 elif choice1 == 2:
     choice1 = color_black
     print('You selected mask color = black')
