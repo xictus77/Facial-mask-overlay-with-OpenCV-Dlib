@@ -27,7 +27,7 @@ elif choice1 == 2:
     print('You selected mask color = black')
 else:
     print("invalid selection, please select again.")
-    input("Please select the choice of mask color\nEnter 1 for cyan\nEnter 2 for black :\n")
+    input("Please select the choice of mask color\nEnter 1 for blue\nEnter 2 for black :\n")
 
 
 choice2 = input("Please enter choice of mask type coverage \nEnter 1 for high \nEnter 2 for medium \nEnter 3 for low :\n")
