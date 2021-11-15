@@ -1,5 +1,5 @@
 numpy == 1.18.5
-pip == 20.2.2
+pip == 21.1
 imutils == 0.5.3
 python >=3.7
 dlib == 19.21.0
